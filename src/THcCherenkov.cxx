@@ -459,10 +459,15 @@ Int_t THcCherenkov::CoarseProcess( TClonesArray&  )
 	fGoodAdcMult.at(npmt) += 1;
       }
     if (!errorFlag && pulseTimeCut && pulseAmp > fAdcPulseAmpTest[npmt]) {
+       cout<<"in "<<ielem<<" "<<npmt<<" "<<errorFlag<<" "<<fAdcTimeWindowMin[npmt]<<"<"<<adctdcdiffTime<<"<"<<fAdcTimeWindowMax[npmt]<<" "<<pulseAmp<<">"<<fAdcPulseAmpTest[npmt]<<endl;
        fAdcGoodElem[npmt]=ielem;
        fAdcPulseAmpTest[npmt] = pulseAmp;
+    }else{
+       cout<<"-- "<<ielem<<" "<<npmt<<" "<<errorFlag<<" "<<fAdcTimeWindowMin[npmt]<<"<"<<adctdcdiffTime<<"<"<<fAdcTimeWindowMax[npmt]<<" "<<pulseAmp<<">"<<fAdcPulseAmpTest[npmt]<<endl;
+
     }
   }
+  cout<<"**************************"<<endl;
   // Loop over the npmt
   for(Int_t npmt = 0; npmt < fNelem; npmt++) {
     Int_t ielem = fAdcGoodElem[npmt];
